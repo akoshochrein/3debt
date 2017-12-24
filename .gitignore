@@ -3,3 +3,6 @@ virtualenv
 
 *.pyc
 requirements.txt
+
+build
+dist
