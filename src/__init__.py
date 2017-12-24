@@ -1,8 +1,18 @@
+import argparse
 import requests
 
 
+parser = argparse.ArgumentParser(description="""
+    Get information if your packages are Python 3 compatible yet
+""".strip())
+
+parser.add_argument('filename',
+    help='Name of the file that contains the dependencies'
+)
+
 def run():
-    parse_file('requirements.txt')
+    args = parser.parse_args()
+    parse_file(args.filename)
 
 
 def parse_file(filename):
