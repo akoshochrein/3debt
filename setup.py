@@ -13,6 +13,7 @@ setup(
     description='Python 3 dependency checker',
     long_description=long_description,
     url='https://github.com/akoskaaa/3debt',
+    author='Akos Hochrein',
     author_email='hoch.akos@gmail.com',
     classifiers=[
         'Development Status :: 3 - Alpha',
