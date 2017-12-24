@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='3debt',
-    version='0.0.2',
+    version='0.0.3',
     description='Python 3 dependency checker',
     long_description=long_description,
     url='https://github.com/akoskaaa/3debt',

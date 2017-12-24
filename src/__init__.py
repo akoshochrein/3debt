@@ -22,6 +22,8 @@ def parse_file(filename):
 
 
 def parse_line(line):
+    if not len(line) or line.startswith('#'):
+        return
     package_name, package_version = line.split('==')
     print('{indicator}-{package_name}@{package_version}'.format(
         indicator='OK' if is_package_3_good(package_name, package_version) else 'NO',
