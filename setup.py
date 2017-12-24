@@ -23,6 +23,7 @@ setup(
     ],
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     install_requires=[
+        'requests'
     ],
     entry_points={
         'console_scripts': [
