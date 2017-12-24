@@ -2,3 +2,4 @@ virtualenv
 3debt.egg-info
 
 *.pyc
+requirements.txt
