@@ -3,27 +3,34 @@ import requests
 
 
 parser = argparse.ArgumentParser(description="""
-    Get information if your packages are Python 3 compatible yet
+    Get information if your dependent packages are Python 3 compatible yet
 """.strip())
-
+parser.add_argument('--ignore',
+    help="Prefixes of packages that you\'d like to ignore while parsing the file",
+    nargs='*', default=[]
+)
 parser.add_argument('filename',
-    help='Name of the file that contains the dependencies'
+    help="Name of the file that contains the dependencies",
 )
 
 def run():
     args = parser.parse_args()
-    parse_file(args.filename)
+    parse_file(args.filename, args.ignore)
 
 
-def parse_file(filename):
+def parse_file(filename, ignored_prefixes):
     with open(filename, 'r') as f:
         for line in f.readlines():
-            parse_line(line.strip())
+            parse_line(line.strip(), ignored_prefixes)
 
 
-def parse_line(line):
+def parse_line(line, ignored_prefixes):
     if not len(line) or line.startswith('#'):
         return
+
+    if any([line.startswith(prefix) for prefix in ignored_prefixes]):
+        return
+
     package_name, package_version = line.split('==')
     print('{indicator}-{package_name}@{package_version}'.format(
         indicator='OK' if is_package_3_good(package_name, package_version) else 'NO',
