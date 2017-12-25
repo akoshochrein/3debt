@@ -22,7 +22,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2',
     ],
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'scripts']),
     install_requires=[
         'argparse',
         'requests'
