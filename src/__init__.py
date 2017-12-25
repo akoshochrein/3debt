@@ -32,11 +32,12 @@ def parse_line(line, ignored_prefixes):
         return
 
     package_name, package_version = line.split('==')
-    print('{indicator}-{package_name}@{package_version}'.format(
-        indicator='OK' if is_package_3_good(package_name, package_version) else 'NO',
-        package_name=package_name,
-        package_version=package_version
-    ))
+    if not is_package_3_good(package_name, package_version):
+        print('{indicator}-{package_name}@{package_version}'.format(
+            indicator='OK' if is_package_3_good(package_name, package_version) else 'NO',
+            package_name=package_name,
+            package_version=package_version
+        ))
 
 
 def is_package_3_good(package_name, package_version):
