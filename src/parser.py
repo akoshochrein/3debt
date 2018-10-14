@@ -19,7 +19,10 @@ class DependencyParser(object):
         if any([line.startswith(prefix) for prefix in self.ignored_prefixes]):
             return
 
-        package_name, package_version = line.split('==')
+        package_info = line.split('==')
+        package_name = package_info[0]
+        package_version = package_info[1] if 2 == len(package_info) else None
+
         pypi_looks_good = is_ok_on_pypi(package_name, package_version)
         if not pypi_looks_good or self.verbose:
             print('{indicator}-{package_name}@{package_version}'.format(
